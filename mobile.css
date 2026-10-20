@@ -2,7 +2,7 @@
 
 /* ---- 휴대폰판에 없는 화면·기능 ---- */
 .om-mobile .wiki-switch,.om-mobile #nonmed-search,.om-mobile #fullscreen,.om-mobile #fullscreen-notice,
-.om-mobile #med-nav .nav-group,.om-mobile #test-slide,.om-mobile .slide-controls{display:none!important}
+.om-mobile #med-nav > :not(#wiki-slide):not(#learning-slide),.om-mobile .slide-controls{display:none!important}
 /* 원본 MD 링크·원본 편집(공유판 build-share.js와 같은 규칙) */
 .om-mobile #md,.om-mobile #wiki-source,.om-mobile #drugs-source,.om-mobile #tx-source,.om-mobile #workup-source,.om-mobile #sxs-source,.om-mobile #ov-source,.om-mobile #bs-source,.om-mobile #learning-source,.om-mobile #library-source{display:none!important}
 .om-mobile #source:not([href^="http"]){display:none!important}

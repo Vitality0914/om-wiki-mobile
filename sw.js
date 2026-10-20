@@ -2,7 +2,7 @@
    - 겉 화면(이 저장소 파일)은 기기에 저장해 두고 뒤에서 새로 받는다(오프라인에서도 열림).
    - app/ 아래 요청은 Dropbox 앱 폴더의 bundle/에서 받아 기기에 저장해 두고, 그 뒤로는 기기에서 바로 준다. */
 importScripts('config.js', 'dbx.js');
-const VERSION = 'shell-2026-10-20-2';
+const VERSION = 'shell-2026-10-20-3';
 const SHELL = 'om-shell-' + VERSION;
 const BASE = OMDBX.shellBase(), APP = BASE + 'app/';
 const SHELL_FILES = ['./', 'config.js', 'dbx.js', 'boot.js', 'bridge.js', 'mobile.css', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'];

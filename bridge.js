@@ -8,10 +8,8 @@ const D = window.OMDBX, MEMO = D.CONFIG.memo, BASE = D.shellBase();
 document.documentElement.classList.add('om-mobile');
 
 // ---------- 1) 화면 제한 ----------
-try {
-  const k = 'om-medical-ui:v1', v = JSON.parse(localStorage.getItem(k) || 'null');
-  if (v && v.v === 1 && v.slide !== 0 && v.slide !== 1) { v.slide = 1; v.slides = 3; localStorage.setItem(k, JSON.stringify(v)); }
-} catch {}
+// 화면 번호는 원본에서 바뀔 수 있으므로(Textbook 추가 등) 번호 대신 버튼으로 확인한다: 열린 화면이 KAMC·Om Wiki가 아니면 Om Wiki로.
+const ALLOWED = ['wiki-slide', 'learning-slide'];
 if (/^#(?:concept|game)=/.test(location.hash)) history.replaceState(null, '', location.pathname);
 
 function toast(text) {
@@ -88,6 +86,8 @@ document.addEventListener('visibilitychange', () => {
 
 // ---------- 원본 화면 코드가 다 읽힌 뒤 ----------
 document.addEventListener('DOMContentLoaded', () => {
+  const current = document.querySelector('#med-nav [aria-pressed="true"]');
+  if (!current || !ALLOWED.includes(current.id)) document.getElementById('wiki-slide')?.click();
   const nav = window.MEDICAL_NAV;
   if (nav) {
     const off = name => () => toast('휴대폰 판에는 ' + name + ' 화면이 없습니다.');
