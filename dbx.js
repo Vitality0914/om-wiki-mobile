@@ -76,6 +76,11 @@ async function call(url, init = {}, retry = 2) {
   try { r = await fetch(url, { ...init, headers: { ...(init.headers || {}), Authorization: 'Bearer ' + await accessToken() } }); }
   catch (e) { if (e.code) throw e; throw fail('net', '인터넷에 연결되어 있지 않습니다.'); }
   if (r.status === 401 && retry) { await accessToken(true); return call(url, init, retry - 1); }
+  // 앱 권한(Permissions)이 모자라면 로그인 때 받은 토큰으로는 고칠 수 없으므로 연결을 끊고 다시 로그인하게 한다.
+  if (r.status === 400) {
+    const text = await r.clone().text().catch(() => '');
+    if (/required scope/.test(text)) { await del('token'); throw fail('auth', 'Dropbox 앱 권한이 부족합니다. App Console의 Permissions에서 files.metadata.read · files.content.read · files.content.write를 켜고 Submit한 뒤 다시 로그인해 주세요.'); }
+  }
   if ((r.status === 429 || r.status >= 500) && retry) {
     await new Promise(ok => setTimeout(ok, Math.min(10, Number(r.headers.get('Retry-After')) || 2) * 1000));
     return call(url, init, retry - 1);

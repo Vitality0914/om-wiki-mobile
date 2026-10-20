@@ -104,7 +104,7 @@ async function syncAndGo() {
     if (e.code === 'auth') return loginView(e.message);
     if (await coreReady()) return go();
     showError(e.message);
-    view(`<div class="card"><h2>자료를 받지 못했습니다</h2><p>인터넷 연결을 확인한 뒤 다시 시도해 주세요.</p><button id="retry" class="primary" type="button">다시 시도</button></div>`);
+    view(`<div class="card"><h2>자료를 받지 못했습니다</h2><p>${e.code === 'empty' ? 'PC에서 자료를 만든 뒤 다시 시도해 주세요.' : e.code === 'net' && !navigator.onLine ? '인터넷 연결을 확인한 뒤 다시 시도해 주세요.' : '아래 오류를 확인한 뒤 다시 시도해 주세요.'}</p><button id="retry" class="primary" type="button">다시 시도</button></div>`);
     $('retry').onclick = syncAndGo;
   }
 }
