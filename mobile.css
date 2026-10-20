@@ -1,0 +1,39 @@
+/* Om Wiki Mobile: 휴대폰·태블릿판 화면(app/index.html 맨 끝에 붙는다). 원본 CSS는 그대로 두고 덮어쓴다. */
+
+/* ---- 휴대폰판에 없는 화면·기능 ---- */
+.om-mobile .wiki-switch,.om-mobile #nonmed-search,.om-mobile #fullscreen,.om-mobile #fullscreen-notice,
+.om-mobile #med-nav .nav-group,.om-mobile #test-slide,.om-mobile .slide-controls{display:none!important}
+/* 원본 MD 링크·원본 편집(공유판 build-share.js와 같은 규칙) */
+.om-mobile #md,.om-mobile #wiki-source,.om-mobile #drugs-source,.om-mobile #tx-source,.om-mobile #workup-source,.om-mobile #sxs-source,.om-mobile #ov-source,.om-mobile #bs-source,.om-mobile #learning-source,.om-mobile #library-source{display:none!important}
+.om-mobile #source:not([href^="http"]){display:none!important}
+.om-mobile #wiki-connect,.om-mobile #wiki-edit,.om-mobile #wiki-editor-panel,.om-mobile #wiki-file-status,.om-mobile .wiki-unwritten a{display:none!important}
+.om-mobile a[href$=".md"],.om-mobile a[href*=".md#"],.om-mobile a[href*=".md?"]{pointer-events:none;color:inherit!important;text-decoration:none!important;cursor:text}
+/* 메모 내보내기·불러오기는 Dropbox 동기화로 대신한다 */
+.om-mobile [id$="-note-export"],.om-mobile [id$="-note-import"]{display:none!important}
+
+/* ---- 머리줄 ---- */
+.om-mobile .appbar{padding-top:max(var(--om-appbar-top,10px),env(safe-area-inset-top));padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+#om-settings{display:inline-flex;align-items:center;justify-content:center;min-width:40px;min-height:40px;border-radius:10px;color:inherit;font-size:20px;text-decoration:none}
+#om-settings:active{background:var(--subtle,rgba(127,127,127,.15))}
+
+/* ---- 알림 ---- */
+#om-toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));z-index:9999;max-width:min(420px,calc(100vw - 32px));padding:10px 16px;border-radius:12px;background:rgba(20,23,28,.92);color:#fff;font-size:14px;line-height:1.45;text-align:center;opacity:0;pointer-events:none;transform:translate(-50%,12px);transition:opacity .2s,transform .2s}
+#om-toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* ---- 메모는 문서 아래로 ---- */
+.om-mobile #wiki-disease-panel:not([hidden]),.om-mobile #drugs-panel:not([hidden]){display:flex;flex-direction:column}
+.om-mobile #wiki-notes,.om-mobile #drugs-notes{order:10;margin-top:16px}
+
+/* ---- 휴대폰(좁은 화면) ---- */
+@media (max-width:700px){
+  /* 머리글 설명과 같은 내용의 소개 글은 한 번만 */
+  .om-mobile .shell > header p,.om-mobile .wiki-intro,.om-mobile .learning-intro h2{display:none}
+  .om-mobile .learning-intro p{margin-top:0}
+  /* Wiki 종류 탭: 한 줄 가로 스크롤 */
+  .om-mobile .shell > header{flex-wrap:wrap}
+  .om-mobile .wiki-collections-top{flex:1 0 100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .om-mobile .wiki-collections-top::-webkit-scrollbar{display:none}
+  /* 손가락으로 누르기 쉬운 크기 */
+  .om-mobile nav[id$="-list"] button,.om-mobile nav[id$="-list"] a{min-height:44px}
+  .om-mobile input,.om-mobile select,.om-mobile textarea{font-size:16px}  /* iOS 확대 방지 */
+}
