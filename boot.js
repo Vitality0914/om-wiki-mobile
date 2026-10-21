@@ -39,7 +39,7 @@ async function loginView(message = '') {
   const codeFirst = ios && standalone;
   const redirectBtn = '<button id="login-redirect" type="button" class="' + (codeFirst ? '' : 'primary') + '">Dropbox로 로그인</button>';
   const codeBtn = `<a id="login-code" class="btn${codeFirst ? ' primary' : ''}" href="${esc(codeUrl)}" target="_blank" rel="noopener">${codeFirst ? 'Dropbox로 로그인' : '코드로 로그인'}</a>`;
-  view(installCard() + `<div class="card"><h2>Dropbox 연결</h2><p>내 Dropbox의 「Apps/Om Wiki Mobile」 폴더만 읽고 씁니다. 비밀번호는 Dropbox 화면에만 입력합니다.</p>
+  view(installCard() + `<div class="card"><h2>Dropbox 연결</h2><p>내 Dropbox의 Om Wiki 자료와 문서 메모 파일만 읽고 씁니다. 비밀번호는 Dropbox 화면에만 입력합니다.</p>
     ${codeFirst ? codeBtn + redirectBtn : redirectBtn + codeBtn}
     <div id="code-box" ${codeFirst ? '' : 'hidden'}><p class="small" style="margin-top:12px">Dropbox에서 「허용」을 누르면 나오는 코드를 복사해 아래에 붙여 넣으세요.</p>
     <div class="row"><input id="code-input" inputmode="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="인증 코드"><button id="code-ok" type="button" class="primary" style="flex:0 0 84px;margin:0">확인</button></div></div></div>`);

@@ -1,6 +1,6 @@
 /* Om Wiki Mobile · Dropbox 연결. 화면(boot.js·bridge.js)과 service worker(sw.js)가 함께 쓴다.
    - 로그인: OAuth PKCE(App secret 없음). 토큰은 이 기기의 IndexedDB에만 둔다.
-   - 앱 폴더 권한만 받으므로 Dropbox의 「Apps/Om Wiki Mobile」 밖은 읽거나 쓸 수 없다. */
+   - 「Om Wiki Personal」은 Full Dropbox 앱이지만 config.js의 두 경로(자료 묶음·문서 메모)만 읽고 쓴다. */
 (function (g) {
 'use strict';
 const CONFIG = g.OM_MOBILE_CONFIG;

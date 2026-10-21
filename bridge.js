@@ -1,6 +1,6 @@
 /* Om Wiki Mobile · Wiki 화면(app/index.html) 안에서 돌아간다. 원본 화면 코드보다 먼저 읽힌다.
    1) 휴대폰 판은 KAMC 지침·Om Wiki만 연다(다른 화면으로 가는 저장값·링크를 막는다).
-   2) window.OM_DATA_FILES를 Dropbox판으로 바꿔 문서 메모를 「Apps/Om Wiki Mobile/memo/문서 메모.json」과 맞춘다.
+   2) window.OM_DATA_FILES를 Dropbox판으로 바꿔 문서 메모를 PC와 같은 「HTML 작업공간/@ 메모 데이터/문서 메모/문서 메모.json」과 맞춘다.
       PC의 om-data-files.js와 같은 규칙: 같은 문서는 updated가 늦은 쪽을 남긴다. 메모는 먼저 이 기기에 저장된다. */
 (() => {
 'use strict';
