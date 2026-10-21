@@ -37,3 +37,6 @@
   .om-mobile nav[id$="-list"] button,.om-mobile nav[id$="-list"] a{min-height:44px}
   .om-mobile input,.om-mobile select,.om-mobile textarea{font-size:16px}  /* iOS 확대 방지 */
 }
+
+/* 개인용 앱에는 문항 화면이 없으므로 Wiki 문서의 「관련 문항」 줄을 숨긴다(question-wiki-filter.js) */
+.om-mobile .qw-related-row{display:none!important}
